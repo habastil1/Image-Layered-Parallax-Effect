@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Layerd Images Parallax Effect</title>
+            <link rel="stylesheet" href="css/style.css">
+        </head>
+        <body>
+            <div class="container">
+                <img src="layer.jpg" class="layer" data-speed="40">
+                <img src="layer.jpg" class="layer" data-speed="30">
+                <img src="layer.jpg" class="layer" data-speed="20">
+                <img src="layer.jpg" class="layer" data-speed="10">
+            </div>
+
+            <script>
+                document.addEventListener('mousemove', parallax);
+                function parallax(e){
+                    this.querySelectorAll('.layer').forEach(layer => {
+                        var speed = layer.getAttribute('data-speed');
+
+                        var x = (window.innerWidth - e.pageX * speed)/250;
+                        var y = (window.innerWidth - e.pageX * speed)/250;
+
+                        layer.style.transform = `translate(${-x}px) translateY(${y}px)`
+
+                    })
+                }
+            </script>
+        </body>
+    </html>
